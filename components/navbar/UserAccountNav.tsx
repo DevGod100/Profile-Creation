@@ -8,11 +8,13 @@ import { LogOut } from 'lucide-react'
 import UserAvatar from './UserAvatar'
 
 
+
 type Props = {
     user:   Pick<User, 'name' | 'email' | 'image'>
 }
 
 const UserAccountNav = ({user}: Props) => {
+
 
   return (
     <DropdownMenu>

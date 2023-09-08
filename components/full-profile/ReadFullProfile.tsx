@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { GetFullProfile } from "@/lib/actions/profile-actions";
 import Image from "next/image";
 
-const FullProfile = () => {
+const ReadFullProfile = () => {
     const [fullProfile, setFullProfile] = useState<{
         profimage: string | null;
         profname: string | null;
@@ -22,9 +22,8 @@ const FullProfile = () => {
     return (
       <div>
         {fullProfile ? (
-          <div>
+          <div className="border border-black rounded-md p-4">
           <>
-            {/* <EditBasic /> */}
             </>
             <p>Profile Image: </p>
             <Image
@@ -45,7 +44,7 @@ const FullProfile = () => {
     );
   };
   
-  export default FullProfile;
+  export default ReadFullProfile;
 
 
 

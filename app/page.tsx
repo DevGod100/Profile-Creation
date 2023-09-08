@@ -1,5 +1,5 @@
 import DisplayUsers from '@/components/DisplayUsers'
-import FullProfile from '@/components/full-profile/FullProfile'
+import FullProfile from '@/components/full-profile/ReadFullProfile'
 
 export default function Home() {
   return (
