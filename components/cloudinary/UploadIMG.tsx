@@ -31,16 +31,25 @@ const UploadIMG = () => {
   }, []);
 
   return (
-    <div className="flex justify-between">
+    <div 
+    className="flex justify-between cursor-pointer"
+    onClick={() => {
+      // Simulate a click on the CldUploadButton
+      const uploadButton = document.querySelector('.UPLOAD-WAS-PRESSED') as HTMLInputElement; // class of CldUploadButton
+      if (uploadButton) {
+        uploadButton.click(); // Trigger the click event on the CldUploadButton
+      }
+    }}
+    >
       <input
         type="hidden"
         name="uploadedImage"
         value={theImage ? theImage : ""}
       />
       {theImage === null && (
-              <div className="w-full border  border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
+              <div className="relative  w-full border  border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
                 <img
-                    className="opacity-70 object-contain object-center"
+                    className="absolute inset-0 h-full opacity-70"
                     src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
                     alt=""
                   />
@@ -48,7 +57,7 @@ const UploadIMG = () => {
                 <CldUploadButton
                   uploadPreset="web_dev_cody"
                   onSuccess={handleUploadSuccess}
-                  className="transition-transform"
+                  className="UPLOAD-WAS-PRESSED"
                 />
                 <ImagePlus />
               </div>
