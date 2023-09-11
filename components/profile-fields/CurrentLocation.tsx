@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Check } from "lucide-react";
+import ClientCurrLoc from "../prof-fields-clientside/ClientCurrLoc";
 
 const prisma = new PrismaClient();
 
@@ -36,18 +37,8 @@ const CurrentLocation = () => {
   }
   return (
     <div>
-      <form action={theServerAction} className="flex p-2 m-2" >
-
-      <Input
-          type="text"
-          // placeholder={session.user?.currentlocation ? currentlocation : 'Location'}
-          placeholder='Current Location'
-          required
-          name="currentLocation"
-        />
-        <Button type="submit">
-          <Check size={20} strokeWidth={2}  />
-        </Button>
+      <form action={theServerAction}>
+        <ClientCurrLoc />
       </form>
     </div>
   );

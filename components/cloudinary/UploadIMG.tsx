@@ -1,9 +1,10 @@
 "use client";
 import { CldUploadButton } from "next-cloudinary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ImagePlus } from "lucide-react";
 import Image from "next/image";
+import { GetImage } from "@/lib/actions/profile-actions";
 
 const UploadIMG = () => {
   const [theImage, setTheImage] = useState(null);
@@ -17,6 +18,18 @@ const UploadIMG = () => {
     }
   };
 
+  //Retrieve old image functionality
+  const [oldField, setOldField] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await GetImage();
+      setOldField(data?.profimage || "");
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <div className="flex justify-between">
       <input
@@ -25,7 +38,12 @@ const UploadIMG = () => {
         value={theImage ? theImage : ""}
       />
       {theImage === null && (
-              <div className="w-full  border border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
+              <div className="w-full border  border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
+                <img
+                    className="opacity-70 object-contain object-center"
+                    src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
+                    alt=""
+                  />
               <div className="flex justify-center py-10">
                 <CldUploadButton
                   uploadPreset="web_dev_cody"

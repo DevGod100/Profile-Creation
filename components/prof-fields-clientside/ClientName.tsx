@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { GetProfName } from "@/lib/actions/profile-actions";
+import { Label } from "../ui/label";
 
 const ClientName = () => {
   const [oldField, setOldField] = useState<string | null>(null);
@@ -20,6 +21,7 @@ const ClientName = () => {
 
   return (
       <div className="flex p-2 m-2">
+        <Label className="text-center font-semibold align-end">Name</Label>
         <Input
           type="text"
           name="profileName" //for the form data!!!

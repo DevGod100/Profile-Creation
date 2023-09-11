@@ -52,6 +52,55 @@ export async function GetProfName() {
   }
 }
 
+
+
+export async function GetCurrLoc() {
+  const session = await getServerSession();
+
+  try {
+    if (session && session.user?.email) {
+      const email = session.user.email;
+
+      const retrievedField = await prisma.user.findUnique({
+        where: { email: email },
+        select: {
+          currentlocation: true,
+        },
+      });
+      return retrievedField; // Return the user data
+    }
+    revalidatePath("/");
+    console.log("Retrieved field Succesfully successfully!");
+  } catch (error) {
+    console.error("Error retrieving field:", error);
+  }
+}
+
+
+export async function GetImage() {
+  const session = await getServerSession();
+
+  try {
+    if (session && session.user?.email) {
+      const email = session.user.email;
+
+      const retrievedField = await prisma.user.findUnique({
+        where: { email: email },
+        select: {
+          profimage: true,
+        },
+      });
+      return retrievedField; // Return the user data
+    }
+    revalidatePath("/");
+    console.log("Retrieved field Succesfully successfully!");
+  } catch (error) {
+    console.error("Error retrieving field:", error);
+  }
+}
+
+
+
 // export async function getUserLoc() {
 // const session = await getServerSession();
 
