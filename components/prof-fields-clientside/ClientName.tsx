@@ -20,8 +20,10 @@ const ClientName = () => {
   }, []);
 
   return (
-      <div className="flex p-2 m-2">
-        <Label className="text-center font-semibold align-end">Name</Label>
+    <div className="p-2 m-2 ">
+      <div className="flex flex-col">
+        <Label className="text-gray-500 py-2">Name</Label>
+        <div className="flex">
         <Input
           type="text"
           name="profileName" //for the form data!!!
@@ -30,10 +32,12 @@ const ClientName = () => {
           required
           onChange={(e) => setOldField(e.target.value)}
         />
-        <Button type="submit">
+        <Button type="submit" className="self-center">
           <Check size={20} strokeWidth={2} />
         </Button>
+        </div>
       </div>
+    </div>
   );
 };
 

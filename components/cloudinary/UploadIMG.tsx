@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { ImagePlus } from "lucide-react";
 import Image from "next/image";
 import { GetImage } from "@/lib/actions/profile-actions";
+import { Separator } from "../ui/separator";
 
 const UploadIMG = () => {
   const [theImage, setTheImage] = useState(null);
@@ -31,15 +32,8 @@ const UploadIMG = () => {
   }, []);
 
   return (
-    <div 
-    className="flex justify-between cursor-pointer"
-    onClick={() => {
-      // Simulate a click on the CldUploadButton
-      const uploadButton = document.querySelector('.UPLOAD-WAS-PRESSED') as HTMLInputElement; // class of CldUploadButton
-      if (uploadButton) {
-        uploadButton.click(); // Trigger the click event on the CldUploadButton
-      }
-    }}
+    <div
+      className="flex justify-between "
     >
       <input
         type="hidden"
@@ -47,33 +41,48 @@ const UploadIMG = () => {
         value={theImage ? theImage : ""}
       />
       {theImage === null && (
-              <div className="relative  w-full border  border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
-                <img
-                    className="absolute inset-0 h-full opacity-70"
-                    src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
-                    alt=""
-                  />
-              <div className="flex justify-center py-10">
-                <CldUploadButton
-                  uploadPreset="web_dev_cody"
-                  onSuccess={handleUploadSuccess}
-                  className="UPLOAD-WAS-PRESSED"
-                />
-                <ImagePlus />
-              </div>
-            </div>
+        // <div className="relative w-full border  border-dashed border-indigo-600 hover:bg-slate-300 hover:text-white">
+        //   <img
+        //       className="absolute inset-0 h-full opacity-70 rounded-full"
+        //       src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
+        //       alt=""
+        //     />
+        <div className="relative group"
+        onClick={() => {
+          // Simulate a click on the CldUploadButton
+          const uploadButton = document.querySelector(
+            ".UPLOAD-WAS-PRESSED"
+          ) as HTMLInputElement; // class of CldUploadButton
+          if (uploadButton) {
+            uploadButton.click(); // Trigger the click event on the CldUploadButton
+          }
+        }}
+        >
+          <img
+            className="cursor-pointer w-full h-20 object-cover group-hover:opacity-70 rounded-full"
+            src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
+            alt=""
+          />
+          <ImagePlus className="z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl opacity-0 group-hover:opacity-100 " />
+
+          <CldUploadButton
+            uploadPreset="web_dev_cody"
+            onSuccess={handleUploadSuccess}
+            className="UPLOAD-WAS-PRESSED absolute top-0 left-0 w-full h-20 rounded-full sr-only"  
+          />
+        </div>
       )}
-      {theImage &&( 
-      <div className="w-full flex justify-center py-4">
-         <Image
-              className="rounded-full object-cover h-[40px] w-[40px]"
-              width={35}
-              height={35}
-              src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${theImage}`}
-              alt="- Profile Image -"
-              />
-        <Button type="submit">Confirm Image</Button>
-      </div>
+      {theImage && (
+        <div className="w-full flex justify-center py-4">
+          <Image
+            className="rounded-full object-cover h-[40px] w-[40px]"
+            width={35}
+            height={35}
+            src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${theImage}`}
+            alt="- Profile Image -"
+          />
+          <Button type="submit">Confirm Image</Button>
+        </div>
       )}
     </div>
   );

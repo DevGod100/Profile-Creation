@@ -6,7 +6,7 @@ import { Check } from "lucide-react";
 import { GetCurrLoc } from "@/lib/actions/profile-actions";
 import { Label } from "../ui/label";
 
-const ClientCurrLoc = () => {    
+const ClientCurrLoc = () => {
   const [oldField, setOldField] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,39 +19,29 @@ const ClientCurrLoc = () => {
   }, []);
 
   return (
-      <div className="flex p-2 m-2">
-        <Label className="font-semibold align-end">Current Location</Label>
-        <Input
-          type="text"
-          name="currentLocation"
-          value={oldField || ""}
-          placeholder='Current Location'
-          required
-          onChange={(e) => setOldField(e.target.value)}
-        />
-        <Button type="submit">
-          <Check size={20} strokeWidth={2} />
-        </Button>
+    <div className="p-2 m-2 ">
+      <div className="flex flex-col">
+        <Label className="text-gray-500  py-2 ">Current Location</Label>
+        <div className="flex">
+          <Input
+            type="text"
+            name="currentLocation"
+            value={oldField || ""}
+            placeholder="Current Location"
+            required
+            onChange={(e) => setOldField(e.target.value)}
+          />
+
+          <Button type="submit" className="self-center">
+            <Check size={20} strokeWidth={2} />
+          </Button>
+        </div>
       </div>
+    </div>
   );
 };
 
 export default ClientCurrLoc;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const [theLoc, setTheLoc] = useState(existingData?.currentlocation || 'Current Location');
 
