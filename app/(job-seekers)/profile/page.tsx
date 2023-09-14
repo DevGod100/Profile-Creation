@@ -1,3 +1,4 @@
+import ClientDevTypes from "@/components/prof-fields-clientside/ClientDevTypes";
 import CurrentLocation from "@/components/profile-fields/CurrentLocation";
 import ProfileImage from "@/components/profile-fields/ProfileImage";
 import ProfileName from "@/components/profile-fields/ProfileName";
@@ -13,6 +14,7 @@ const profile = () => {
         <ProfileName />
         <CurrentLocation />
       </div>
+      <ClientDevTypes />
     </div>
   );
 };
