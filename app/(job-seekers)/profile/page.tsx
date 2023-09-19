@@ -44,9 +44,7 @@ const profile = () => {
           
         </div>
       </div>
-      {/* <EditBasic /> */}
-      {/* <DevData /> */}
-      {/* <DisplayUsers /> */}
+      <DisplayUsers />
       </div>
   );
 };

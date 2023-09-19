@@ -12,7 +12,7 @@ import DeveloperType from "../profile-fields/DeveloperType";
 const DevData = () => {
   return (
 
-    <Card>
+    <Card >
       <CardHeader>
         <CardTitle>Developer Data</CardTitle>
         <CardDescription>What dev are you?</CardDescription>

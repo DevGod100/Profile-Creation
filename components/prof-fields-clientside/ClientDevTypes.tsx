@@ -14,9 +14,9 @@ import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { GetDevType } from "@/lib/actions/profile-actions";
 import { developerTypes } from "@/lib/data-info/developer-types";
+import { ScrollArea } from "../ui/scroll-area";
 
 const ClientDevTypes = () => {
-  //Set Field functionality------------------------------------------
   const [oldField, setOldField] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,15 +27,15 @@ const ClientDevTypes = () => {
 
     fetchData();
   }, []);
-  //-----------------------------------------------------------------
 
   return (
-    <div className="flex">
+    <div className="flex w-max">
       <Select name="devType">
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="min-w-[180px]">
           <SelectValue placeholder={oldField} />
         </SelectTrigger>
         <SelectContent>
+        <ScrollArea className="h-72 min-w-[180px] ">
           <SelectGroup>
             {developerTypes.map((type, index) => (
               <SelectItem key={index} value={type}>
@@ -43,6 +43,7 @@ const ClientDevTypes = () => {
               </SelectItem>
             ))}
           </SelectGroup>
+        </ScrollArea>
         </SelectContent>
       </Select>
       <Button type="submit" className="self-center">
@@ -53,30 +54,3 @@ const ClientDevTypes = () => {
 };
 
 export default ClientDevTypes;
-
-{
-  /* <div className="p-2 m-2 ">
-<div className="flex flex-col">
-  <Label className="text-gray-500 py-2">Developer Type</Label>
-  <div className="flex">
-    <Input
-      type="text"
-      name="devtype" //for the form data!!!
-      value={oldField || ""}
-      placeholder="Data Analyst..."
-      required
-      onChange={(e) => setOldField(e.target.value)}
-    />
-    <ul>
-      {developerTypes.map((type, index) => (
-        <li key={index}>{type}</li>
-      ))}
-    </ul>
-
-    <Button type="submit" className="self-center">
-      <Check size={20} strokeWidth={2} />
-    </Button>
-  </div>
-</div>
-</div> */
-}
