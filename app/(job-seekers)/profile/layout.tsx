@@ -1,19 +1,13 @@
-import Link from "next/link";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-
-import { cn } from "@/lib/utils";
-
-import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import NavBar from "@/components/navbar/NavBar";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/GitHub-components/GitHubShadCnPageHeader";
-import { ShadCnDIYTabs } from "@/components/GitHub-components/ShadCnDIY-Tabs";
+
 import { ArrowDownIcon } from "lucide-react";
+import ProfileStats from "@/components/GitHub-components/ProfileStats";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,6 +33,7 @@ export default function Layout({ children }: LayoutProps) {
           <PageHeaderDescription>
           A few minutes of typing and your profile is complete!
           </PageHeaderDescription>
+          <ProfileStats />
          
         </PageHeader>
         <section>

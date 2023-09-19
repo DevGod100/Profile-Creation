@@ -20,9 +20,12 @@ const EditBasic = () => {
         <CardDescription>Who are You?</CardDescription>
       </CardHeader>
       <CardContent className="grid">
+        <div className="flex flex-col items-center mb-2">
         <ProfileImage />
+        </div>
         <Separator className="mt-2" />
         <ProfileName />
+
         <CurrentLocation />
       </CardContent>
     </Card>

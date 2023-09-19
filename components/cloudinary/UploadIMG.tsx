@@ -5,9 +5,13 @@ import { Button } from "../ui/button";
 import { ImagePlus } from "lucide-react";
 import Image from "next/image";
 import { GetImage } from "@/lib/actions/profile-actions";
-import { Separator } from "../ui/separator";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import LoadingCircle from "../GitHub-components/LoadingCircle";
+
 
 const UploadIMG = () => {
+  const [loading, setLoading] = useState(false);
+
   const [theImage, setTheImage] = useState(null);
 
   const handleUploadSuccess = (response: any) => {
@@ -24,17 +28,17 @@ const UploadIMG = () => {
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const data = await GetImage();
       setOldField(data?.profimage || "");
+      setLoading(false);
     }
 
     fetchData();
   }, []);
 
   return (
-    <div
-      className="flex justify-between "
-    >
+    <div className="flex justify-between ">
       <input
         type="hidden"
         name="uploadedImage"
@@ -47,28 +51,32 @@ const UploadIMG = () => {
         //       src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
         //       alt=""
         //     />
-        <div className="relative group"
-        onClick={() => {
-          // Simulate a click on the CldUploadButton
-          const uploadButton = document.querySelector(
-            ".UPLOAD-WAS-PRESSED"
-          ) as HTMLInputElement; // class of CldUploadButton
-          if (uploadButton) {
-            uploadButton.click(); // Trigger the click event on the CldUploadButton
-          }
-        }}
+        <div
+          className="relative group"
+          onClick={() => {
+            // Simulate a click on the CldUploadButton
+            const uploadButton = document.querySelector(
+              ".UPLOAD-WAS-PRESSED"
+            ) as HTMLInputElement; // class of CldUploadButton
+            if (uploadButton) {
+              uploadButton.click(); // Trigger the click event on the CldUploadButton
+            }
+          }}
         >
-          <img
-            className="cursor-pointer w-full h-20 object-cover  group-hover:opacity-100 rounded-full transition-brightness brightness-100 group-hover:brightness-75"
-            src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
-            alt=""
-          />
-          <ImagePlus className="cursor-pointer z-10 Center-This text-white text-xl opacity-0 group-hover:opacity-100 " />
+          <Avatar className="cursor-pointer scale-150 transition-brightness brightness-100 group-hover:brightness-75 items-center">
+            <AvatarImage
+              className="object-cover"
+              src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
+              alt="profile-image"
+            />
+            <AvatarFallback className="bg-blue-400"><LoadingCircle/></AvatarFallback>
+          </Avatar>
 
           <CldUploadButton
+           
             uploadPreset="web_dev_cody"
             onSuccess={handleUploadSuccess}
-            className="UPLOAD-WAS-PRESSED absolute top-0 left-0 w-full h-20 rounded-full sr-only"  
+            className="UPLOAD-WAS-PRESSED absolute top-0 left-0 w-full h-20 rounded-full sr-only"
           />
         </div>
       )}
@@ -81,7 +89,10 @@ const UploadIMG = () => {
             src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${theImage}`}
             alt="- Profile Image -"
           />
-          <Button type="submit">Confirm Image</Button>
+          <Button type="submit" className="self-center">
+            {!loading && <p>Confirm Image</p>}
+            {loading && <LoadingCircle />}
+          </Button>
         </div>
       )}
     </div>

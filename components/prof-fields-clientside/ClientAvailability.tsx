@@ -12,13 +12,13 @@ import {
 import { Button } from "../ui/button";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
-import { GetDevType } from "@/lib/actions/profile-actions";
-import { developerTypes } from "@/lib/data-info/developer-types";
+import { GetAvailabilityType, GetDevType } from "@/lib/actions/profile-actions";
 import { ScrollArea } from "../ui/scroll-area";
 import LoadingCircle from "../GitHub-components/LoadingCircle";
+import { availabilityTypes } from "@/lib/data-info/availability-types";
 
 
-const ClientDevTypes = () => {
+const ClientAvailability = () => {
   const [loading, setLoading] = useState(false);
 
   const [oldField, setOldField] = useState<string | null>(null);
@@ -26,8 +26,8 @@ const ClientDevTypes = () => {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const data = await GetDevType();
-      setOldField(data?.devtype || "");
+      const data = await GetAvailabilityType();
+      setOldField(data?.availability || "");
       setLoading(false);
     }
 
@@ -36,14 +36,14 @@ const ClientDevTypes = () => {
 
   return (
     <div className="flex w-max">
-      <Select name="devType">
+      <Select name="Availability">
         <SelectTrigger className="min-w-[180px]">
           <SelectValue placeholder={oldField} />
         </SelectTrigger>
         <SelectContent>
         <ScrollArea className="h-72 min-w-[180px] ">
           <SelectGroup>
-            {developerTypes.map((type, index) => (
+            {availabilityTypes.map((type, index) => (
               <SelectItem key={index} value={type}>
                 {type}
               </SelectItem>
@@ -62,4 +62,4 @@ const ClientDevTypes = () => {
   );
 };
 
-export default ClientDevTypes;
+export default ClientAvailability;

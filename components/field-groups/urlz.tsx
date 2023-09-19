@@ -9,6 +9,7 @@ import {
 import LinkedinUrl from "../profile-fields/LinkedInUrl";
 import GitHubUrl from "../profile-fields/GitHubUrl";
 import { Separator } from "@/components/ui/separator";
+import StackOverflowUrl from "../profile-fields/StackOverflowUrl";
 
 
 const URLz = () => {
@@ -24,6 +25,7 @@ const URLz = () => {
       <CardContent className="grid">
         <LinkedinUrl />
         <GitHubUrl />
+        <StackOverflowUrl />
       </CardContent>
     </Card>
   
