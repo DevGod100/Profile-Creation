@@ -48,6 +48,8 @@ model User {
   profimage    String?
   currentlocation String?
   devtype         String?
+  linkedinurl     String?
+  githuburl     String?
   accounts Account[]
   sessions Session[]
 }
