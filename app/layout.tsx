@@ -8,8 +8,8 @@ import Providers from '@/components/Providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Quizmify',
-  description: 'Quiz app by Elliot',
+  title: 'Profile App',
+  description: 'Join and get employed',
 }
 
 export default function RootLayout({
