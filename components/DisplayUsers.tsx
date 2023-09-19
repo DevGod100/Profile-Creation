@@ -3,13 +3,13 @@ import Image from "next/image";
 import { Separator } from "./ui/separator";
 const prisma = new PrismaClient();
 
-export default async function NextServerProfileForm() {
+export default async function DisplayUsers() {
 
     const allUsers = await prisma.user.findMany({});
 
   return (
     <div>
-      <div className="flex flex-col ">
+      {/* <div className="flex flex-col ">
         {allUsers && allUsers.map((user) => (
           <div key={user.id} className="my-2 rounded-md bg-gray-50 border border-gray-500 p-2">
             <div className="flex justify-between">
@@ -43,7 +43,7 @@ export default async function NextServerProfileForm() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
       <pre>{JSON.stringify(allUsers, null, 2)}</pre>
 
     </div>

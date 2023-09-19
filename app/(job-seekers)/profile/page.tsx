@@ -1,22 +1,17 @@
+import DisplayUsers from "@/components/DisplayUsers";
 import HideUiIfNotLoggedIn from "@/components/HideUiIfNotLoggedIn";
-import ClientDevTypes from "@/components/prof-fields-clientside/ClientDevTypes";
-import CurrentLocation from "@/components/profile-fields/CurrentLocation";
-import ProfileImage from "@/components/profile-fields/ProfileImage";
-import ProfileName from "@/components/profile-fields/ProfileName";
-import { Separator } from "@/components/ui/separator";
-import React from "react";
+import DevData from "@/components/field-groups/DevData";
+import EditBasic from "@/components/field-groups/EditBasic";
 
 const profile = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <HideUiIfNotLoggedIn/>
-      <div className="flex flex-col m-2 p-2 border border-gray-5 rounded-md">
-        <ProfileImage />
-          <Separator className="mt-5 "/>
-        <ProfileName />
-        <CurrentLocation />
+    <div>
+      <HideUiIfNotLoggedIn />
+      <div className="//MAKE GRID OF ORGANIZED CONTENT LIKE ZIPRECRUITER PROFIILE, EXCEPT IN 3 ROWS">
+      {/* <EditBasic /> */}
+      <DevData />
+      <DisplayUsers />
       </div>
-      <ClientDevTypes />
     </div>
   );
 };

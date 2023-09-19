@@ -47,6 +47,7 @@ model User {
   profname     String?
   profimage    String?
   currentlocation String?
+  devtype         String?
   accounts Account[]
   sessions Session[]
 }

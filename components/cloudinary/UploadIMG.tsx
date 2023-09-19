@@ -63,7 +63,7 @@ const UploadIMG = () => {
             src={`http://res.cloudinary.com/uploaded-profile-images/image/upload/v1693526415/${oldField}`}
             alt=""
           />
-          <ImagePlus className="cursor-pointer z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl opacity-0 group-hover:opacity-100 " />
+          <ImagePlus className="cursor-pointer z-10 Center-This text-white text-xl opacity-0 group-hover:opacity-100 " />
 
           <CldUploadButton
             uploadPreset="web_dev_cody"
