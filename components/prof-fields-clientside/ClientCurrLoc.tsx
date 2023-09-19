@@ -5,14 +5,19 @@ import { Input } from "../ui/input";
 import { Check } from "lucide-react";
 import { GetCurrLoc } from "@/lib/actions/profile-actions";
 import { Label } from "../ui/label";
+import LoadingCircle from "../GitHub-components/LoadingCircle";
 
 const ClientCurrLoc = () => {
+  const [loading, setLoading] = useState(false);
+
   const [oldField, setOldField] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const data = await GetCurrLoc();
       setOldField(data?.currentlocation || "");
+      setLoading(false);
     }
 
     fetchData();
@@ -32,9 +37,12 @@ const ClientCurrLoc = () => {
             onChange={(e) => setOldField(e.target.value)}
           />
 
-          <Button type="submit" className="self-center">
-            <Check size={20} strokeWidth={2} />
-          </Button>
+<Button type="submit" className="self-center ">
+         {!loading && (<Check size={20} strokeWidth={2} />)}
+          {loading && ( 
+           <LoadingCircle />
+          )} 
+        </Button>
         </div>
       </div>
     </div>

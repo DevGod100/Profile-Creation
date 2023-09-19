@@ -21,7 +21,7 @@ const EditBasic = () => {
       </CardHeader>
       <CardContent className="grid">
         <ProfileImage />
-        <Separator className="mt-5" />
+        <Separator className="mt-2" />
         <ProfileName />
         <CurrentLocation />
       </CardContent>

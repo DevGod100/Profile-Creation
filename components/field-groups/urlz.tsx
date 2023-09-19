@@ -8,6 +8,8 @@ import {
 } from "../ui/card";
 import LinkedinUrl from "../profile-fields/LinkedInUrl";
 import GitHubUrl from "../profile-fields/GitHubUrl";
+import { Separator } from "@/components/ui/separator";
+
 
 const URLz = () => {
   return (
@@ -15,7 +17,10 @@ const URLz = () => {
       <CardHeader>
         <CardTitle>Url's</CardTitle>
         <CardDescription>Links to your accounts</CardDescription>
+      <Separator className="mt-2" />
+
       </CardHeader>
+
       <CardContent className="grid">
         <LinkedinUrl />
         <GitHubUrl />

@@ -6,21 +6,26 @@ import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { GetLinkedInUrl } from "@/lib/actions/profile-actions";
 import { Label } from "../ui/label";
+import LoadingCircle from "../GitHub-components/LoadingCircle";
 
 const ClientLinkedInUrl = () => {
+  const [loading, setLoading] = useState(false);
+
   const [oldField, setOldField] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       const data = await GetLinkedInUrl();
       setOldField(data?.linkedinurl || "");
+      setLoading(false);
     }
 
     fetchData();
   }, []);
 
   return (
-    <div className="p-2 m-2 ">
+    <div className="py-2" >
       <div className="flex flex-col">
         <Label className="text-gray-500 py-2">LinkedIn</Label>
         <div className="flex">
@@ -32,8 +37,11 @@ const ClientLinkedInUrl = () => {
           required
           onChange={(e) => setOldField(e.target.value)}
         />
-        <Button type="submit" className="self-center">
-          <Check size={20} strokeWidth={2} />
+         <Button type="submit" className="self-center ">
+         {!loading && (<Check size={20} strokeWidth={2} />)}
+          {loading && ( 
+           <LoadingCircle />
+          )} 
         </Button>
         </div>
       </div>
