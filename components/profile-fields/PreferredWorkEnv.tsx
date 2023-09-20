@@ -2,14 +2,15 @@ import { getServerSession } from "next-auth";
 import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import ClientDevTypes from '../prof-fields-clientside/ClientDevTypes'
+import ClientPreferredWorkEnv from "../prof-fields-clientside/ClientPreferredWorkEnv";
 
 const prisma = new PrismaClient();
 
-const DeveloperType = () => {
+const PreferredWorkEnv = () => {
     async function theServerAction(data: FormData) {
         "use server";
         const session = await getServerSession();
-        const devType = data.get("devType") as string;
+        const prefworkEnv = data.get("prefworkEnv") as string;
     
         try {
           if (session && session.user?.email) {
@@ -18,23 +19,23 @@ const DeveloperType = () => {
             await prisma.user.update({
               where: { email: email },
               data: {
-                devtype: devType,
+                prefworkenv: prefworkEnv,
               },
             });
           }
           revalidatePath("/");
-          console.log("Dev Type updated successfully!");
+          console.log("Preffered work env updated successfully!");
         } catch (error) {
-          console.error("Error updating Dev Type:", error);
+          console.error("Error updating Preffered work env:", error);
         }
       }
   return (
     <div>
       <form action={theServerAction}>
-      <ClientDevTypes />
+      <ClientPreferredWorkEnv />
       </form>
     </div>
   )
 }
 
-export default DeveloperType
+export default PreferredWorkEnv

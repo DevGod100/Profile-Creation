@@ -56,7 +56,7 @@ const ProfileStats = () => {
           {percentage}%{` `}
           <span className="stat-title text-gray-200">complete</span>
         </div>
-        <div className="stat-title text-gray-200">{emptyFields} tasks remaining</div>
+        <div className="stat-title text-gray-200">{emptyFields} tasks remaining...</div>
       </div>
     </div>
   );

@@ -15,7 +15,8 @@ import { useEffect, useState } from "react";
 import { GetAvailabilityType, GetDevType } from "@/lib/actions/profile-actions";
 import { ScrollArea } from "../ui/scroll-area";
 import LoadingCircle from "../GitHub-components/LoadingCircle";
-import { availabilityTypes } from "@/lib/data-info/availability-types";
+import { Label } from "../ui/label";
+import { ListOfAvailabilityTypes } from "@/lib/data-info/work-related";
 
 
 const ClientAvailability = () => {
@@ -35,15 +36,18 @@ const ClientAvailability = () => {
   }, []);
 
   return (
-    <div className="flex w-max">
+    <div className="flex flex-col">
+<Label className="text-gray-500  py-2 ">Availability</Label>
+  
+    <div className="flex">
       <Select name="Availability">
         <SelectTrigger className="min-w-[180px]">
           <SelectValue placeholder={oldField} />
         </SelectTrigger>
         <SelectContent>
-        <ScrollArea className="h-72 min-w-[180px] ">
+        <ScrollArea className=" min-w-[180px] ">
           <SelectGroup>
-            {availabilityTypes.map((type, index) => (
+            {ListOfAvailabilityTypes.map((type, index) => (
               <SelectItem key={index} value={type}>
                 {type}
               </SelectItem>
@@ -58,6 +62,7 @@ const ClientAvailability = () => {
            <LoadingCircle />
           )} 
         </Button>
+    </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import Availability from "../profile-fields/Availability";
+import PreferredWorkEnv from "../profile-fields/PreferredWorkEnv";
 
 const WorkEnvironment = () => {
   return (
@@ -19,7 +20,7 @@ const WorkEnvironment = () => {
       </CardHeader>
       <CardContent className="grid">
         <Availability />
-        <Separator className="mt-5" />
+        <PreferredWorkEnv />
 
       </CardContent>
     </Card>

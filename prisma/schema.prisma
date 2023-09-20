@@ -52,6 +52,7 @@ model User {
   linkedinurl     String?
   githuburl     String?
   stackoverflowurl  String?
+  prefworkenv  String?
   accounts Account[]
   sessions Session[]
 }

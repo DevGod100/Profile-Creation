@@ -20,7 +20,6 @@ const DevData = () => {
       <CardContent className="grid">
         <DeveloperType />
         <Separator className="mt-5" />
-        <DeveloperType />
 
       </CardContent>
     </Card>
