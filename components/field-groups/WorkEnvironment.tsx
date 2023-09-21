@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 
 import {
   Card,
@@ -9,6 +8,7 @@ import {
 } from "../ui/card";
 import Availability from "../profile-fields/Availability";
 import PreferredWorkEnv from "../profile-fields/PreferredWorkEnv";
+import CareerGoals from "../profile-fields/CareerGoals";
 
 const WorkEnvironment = () => {
   return (
@@ -21,6 +21,7 @@ const WorkEnvironment = () => {
       <CardContent className="grid">
         <Availability />
         <PreferredWorkEnv />
+        <CareerGoals />
 
       </CardContent>
     </Card>

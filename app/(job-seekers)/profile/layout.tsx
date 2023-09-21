@@ -8,6 +8,7 @@ import {
 
 import { ArrowDownIcon } from "lucide-react";
 import ProfileStats from "@/components/GitHub-components/ProfileStats";
+import HideUiIfNotLoggedIn from "@/components/HideUiIfNotLoggedIn";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
+      <HideUiIfNotLoggedIn />
       <div className="container relative">
         <PageHeader className="page-header pb-8">
           <p
