@@ -10,16 +10,17 @@ import {
 } from "@/components/ui/select";
 
 import { Button } from "../ui/button";
-import { Check } from "lucide-react";
+import { Check} from "lucide-react";
 import { useEffect, useState } from "react";
-import { GetAvailabilityType, GetDevType } from "@/lib/actions/profile-actions";
 import { ScrollArea } from "../ui/scroll-area";
 import LoadingCircle from "../GitHub-components/LoadingCircle";
 import { Label } from "../ui/label";
-import { ListOfAvailabilityTypes } from "@/lib/data-info/work-related";
+import { ListOfWorkPlace } from "@/lib/data-info/work-related";
+import { GetWorkPlace } from "@/lib/actions/profile-actions";
 
 
-const ClientAvailability = () => {
+const ClientWorkPlace = () => {
+
   const [loading, setLoading] = useState(false);
 
   const [oldField, setOldField] = useState<string | null>(null);
@@ -27,8 +28,8 @@ const ClientAvailability = () => {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const data = await GetAvailabilityType();
-      setOldField(data?.availability || "");
+      const data = await GetWorkPlace();
+      setOldField(data?.workplace || "");
       setLoading(false);
     }
 
@@ -45,18 +46,19 @@ const ClientAvailability = () => {
 
 
   return (
-    <div className="flex flex-col">
-<Label className="text-gray-500  py-2 ">Availability</Label>
+
+<div className="flex flex-col">
+<Label className="text-gray-500  py-2 ">Work Place</Label>
   
     <div className="flex">
-      <Select name="Availability">
+      <Select name="workPlace">
         <SelectTrigger className="min-w-[180px]">
           <SelectValue placeholder={oldField} />
         </SelectTrigger>
         <SelectContent>
         <ScrollArea className=" min-w-[180px] ">
           <SelectGroup>
-            {ListOfAvailabilityTypes.map((type, index) => (
+            {ListOfWorkPlace.map((type, index) => (
               <SelectItem key={index} value={type}>
                 {type}
               </SelectItem>
@@ -67,13 +69,14 @@ const ClientAvailability = () => {
       </Select>
       <Button type="submit" className="self-center" onClick={loadForThreeSec}>
          {!loading && (<Check size={20} strokeWidth={2} />)}
-          {loading && ( 
+          {loading && (
            <LoadingCircle />
-          )} 
+          )}
         </Button>
     </div>
     </div>
   );
 };
 
-export default ClientAvailability;
+export default ClientWorkPlace;
+

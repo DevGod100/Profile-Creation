@@ -24,6 +24,15 @@ const ClientLinkedInUrl = () => {
     fetchData();
   }, []);
 
+  const loadForThreeSec = () => {
+    setLoading(true);
+    
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000); 
+  };
+
+
   return (
     <div className="py-2" >
       <div className="flex flex-col">
@@ -37,7 +46,7 @@ const ClientLinkedInUrl = () => {
           required
           onChange={(e) => setOldField(e.target.value)}
         />
-         <Button type="submit" className="self-center ">
+         <Button type="submit" className="self-center" onClick={loadForThreeSec}>
          {!loading && (<Check size={20} strokeWidth={2} />)}
           {loading && ( 
            <LoadingCircle />

@@ -4,7 +4,7 @@ export const ListOfPreferredWorkEnvironments = [
   "Fast-paced/dynamic",
 ];
 
-export const ListOfWorkplaceLocations = ["None", "Hybrid", "Remote", "On-site"];
+export const ListOfWorkPlace = ["None", "Hybrid", "Remote", "On-site"];
 
 export const ListOfCareerGoals = [
   "Advancement within the company",

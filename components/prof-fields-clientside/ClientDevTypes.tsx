@@ -38,6 +38,15 @@ const ClientDevTypes = () => {
     fetchData();
   }, []);
 
+  const loadForThreeSec = () => {
+    setLoading(true);
+    
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000); 
+  };
+
+
   return (
 
 <div className="flex flex-col">
@@ -60,7 +69,7 @@ const ClientDevTypes = () => {
         </ScrollArea>
         </SelectContent>
       </Select>
-      <Button type="submit" className="self-center ">
+      <Button type="submit" className="self-center" onClick={loadForThreeSec}>
          {!loading && (<Check size={20} strokeWidth={2} />)}
           {loading && (
            <LoadingCircle />
@@ -106,7 +115,7 @@ export default ClientDevTypes;
   </ScrollArea>
   </SelectContent>
 </Select>
-<Button type="submit" className="self-center ">
+<Button type="submit" className="self-center" onClick={loadForThreeSec}>
    {!loading && (<Check size={20} strokeWidth={2} />)}
     {loading && ( 
      <LoadingCircle />

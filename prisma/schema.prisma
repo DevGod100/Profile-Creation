@@ -1,14 +1,13 @@
 generator client {
   provider = "prisma-client-js"
 }
- 
+
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
- 
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -22,12 +21,12 @@ model Account {
   scope             String?
   id_token          String? @db.Text
   session_state     String?
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  @@unique([provider, providerAccountId])
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@unique([provider, providerAccountId])
   @@index([userId], name: "userId")
 }
- 
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
@@ -39,21 +38,23 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image    String?
-  profname     String?
-  profimage    String?
-  currentlocation String?
-  devtype         String?
-  availability         String?
-  linkedinurl     String?
-  githuburl     String?
-  stackoverflowurl  String?
-  prefworkenv  String?
-  careergoals  String?
-  accounts Account[]
-  sessions Session[]
+  id               String    @id @default(cuid())
+  name             String?
+  email            String?   @unique
+  emailVerified    DateTime?
+  image            String?
+  profname         String?
+  profimage        String?
+  currentlocation  String?
+  devtype          String?
+  availability     String?
+  linkedinurl      String?
+  githuburl        String?
+  stackoverflowurl String?
+  personalportfolio String?
+  prefworkenv      String?
+  careergoals      String?
+  workplace        String?
+  accounts         Account[]
+  sessions         Session[]
 }

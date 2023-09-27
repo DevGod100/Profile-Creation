@@ -9,6 +9,7 @@ import {
 import Availability from "../profile-fields/Availability";
 import PreferredWorkEnv from "../profile-fields/PreferredWorkEnv";
 import CareerGoals from "../profile-fields/CareerGoals";
+import WorkPlace from "../profile-fields/WorkPlace";
 
 const WorkEnvironment = () => {
   return (
@@ -22,7 +23,7 @@ const WorkEnvironment = () => {
         <Availability />
         <PreferredWorkEnv />
         <CareerGoals />
-
+       <WorkPlace />
       </CardContent>
     </Card>
   

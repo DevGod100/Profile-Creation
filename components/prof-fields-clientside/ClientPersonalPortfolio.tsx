@@ -4,12 +4,11 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
-import { GetGitHubUrl} from "@/lib/actions/profile-actions";
+import { GetLinkedInUrl, GetPersonalPortfolio } from "@/lib/actions/profile-actions";
 import { Label } from "../ui/label";
 import LoadingCircle from "../GitHub-components/LoadingCircle";
 
-
-const ClientGitHubUrl = () => {
+const ClientPersonalPortfolio = () => {
   const [loading, setLoading] = useState(false);
 
   const [oldField, setOldField] = useState<string | null>(null);
@@ -17,8 +16,8 @@ const ClientGitHubUrl = () => {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const data = await GetGitHubUrl();
-      setOldField(data?.githuburl || "");
+      const data = await GetPersonalPortfolio();
+      setOldField(data?.personalportfolio || "");
       setLoading(false);
     }
 
@@ -35,15 +34,15 @@ const ClientGitHubUrl = () => {
 
 
   return (
-    <div  className="py-2" >
+    <div className="py-2" >
       <div className="flex flex-col">
-        <Label className="text-gray-500 py-2">Github</Label>
+        <Label className="text-gray-500 py-2">Portfolio Site</Label>
         <div className="flex">
         <Input
           type="text"
-          name="githubUrl" //for the form data!!!
+          name="personalPortfolio" //for the form data!!!
           value={oldField || ""}
-          placeholder="Your Github account..."
+          placeholder="Your Personal Portfolio..."
           required
           onChange={(e) => setOldField(e.target.value)}
         />
@@ -51,12 +50,12 @@ const ClientGitHubUrl = () => {
          {!loading && (<Check size={20} strokeWidth={2} />)}
           {loading && ( 
            <LoadingCircle />
-          )} 
-        </Button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ClientGitHubUrl;
+           )} 
+           </Button>
+           </div>
+         </div>
+       </div>
+     );
+   };
+   
+   export default ClientPersonalPortfolio;

@@ -1,8 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* https://www.realtimecolors.com/?colors=2c021c-ffffff-384bdc-ffe100-ffb8e4&fonts=Poppins-Poppins */
+/* @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 323 91% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 323 91% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 323 91% 9%;
+    --primary: 233 70% 54%;
+    --primary-foreground: 323 92% 90%;
+    --secondary: 53 100% 50%;
+    --secondary-foreground: 323 91% 9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 323 91% 70%;
+    --accent: 323 100% 86%;
+    --accent-foreground: 323 92% 90%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 323 91% 9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 323 100% 40%;
+    --radius: 0.5rem;
+
+    .dark {
+      --background: 0 0% 0%;
+      --foreground: 0 0% 100%;
+      --card: 0 0% 0%;
+      --card-foreground: 0 0% 100%;
+      --popover: 0 0% 0%;
+      --popover-foreground: 0 0% 100%;
+      --primary: 233 70% 46%;
+      --primary-foreground: 0 0% 10%;
+      --secondary: 53 100% 50%;
+      --secondary-foreground: 0 0% 100%;
+      --muted: 0 0% 80%;
+      --muted-foreground: 0 0% 100%;
+      --accent: 307 100% 57%;
+      --accent-foreground: 0 0% 100%;
+      --destructive: 0 62% 30%;
+      --destructive-foreground: 0 0% 10%;
+      --border: 0 0% 60%;
+      --input: 0 0% 80%;
+      --ring: 307 100% 60%;
+    }
+  }
+  } */
  
-@layer base {
+ @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
